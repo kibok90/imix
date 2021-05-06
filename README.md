@@ -21,13 +21,13 @@ PyTorch code for the ICLR 2021 paper [[i-Mix: A Domain-Agnostic Strategy for Con
 # Data
 - CIFAR-10/100 will automatically be downloaded.
 - For ImageNet, please refer to the [[PyTorch ImageNet example](https://github.com/pytorch/examples/tree/master/imagenet)]. The folder structure should be like `data/imagenet/train/n01440764/`
-- For speech commands, run `bash speech_commands/download_speech_commands_dataset.sh`
+- For speech commands, run `bash speech_commands/download_speech_commands_dataset.sh`.
 - For tabular datasets, download [[covtype.data.gz](https://archive.ics.uci.edu/ml/machine-learning-databases/covtype/covtype.data.gz)] and place it to `data/` and [[HIGGS.csv.gz](https://archive.ics.uci.edu/ml/machine-learning-databases/00280/HIGGS.csv.gz)] and place them in `data/`. They are processed when first loaded.
 
 # Running scripts
 Please refer to [[run.sh](run.sh)].
 
-
+# Plug-in example
 For those who want to apply our method in their own code, we provide a minimal example based on [[MoCo](https://github.com/facebookresearch/moco)]:
 ```
 # mixup: somewhere in main_moco.py
@@ -83,7 +83,6 @@ loss = lam * criterion(output, target) + (1. - lam) * criterion(output, target_a
 contrast = torch.cat([k, self.queue.clone().detach().t()], dim=0)
 logits = torch.mm(q, contrast.t())
 ```
-
 
 # Note
 - `builder.py` is adapted from [[MoCo](https://github.com/facebookresearch/moco/blob/master/moco/builder.py)] and [[PyContrast](https://github.com/HobbitLong/PyContrast/tree/master/pycontrast/learning)].
