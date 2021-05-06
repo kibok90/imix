@@ -1,9 +1,34 @@
+# Introduction
 PyTorch code for the ICLR 2021 paper [[i-Mix: A Domain-Agnostic Strategy for Contrastive Representation Learning](https://arxiv.org/abs/2010.08887)].
+```
+@inproceedings{lee2021imix,
+  title={i-Mix: A Domain-Agnostic Strategy for Contrastive Representation Learning},
+  author={Lee, Kibok and Zhu, Yian and Sohn, Kihyuk and Li, Chun-Liang and Shin, Jinwoo and Lee, Honglak},
+  booktitle={ICLR},
+  year={2021}
+}
+```
 
-Code coming soon.
+# Dependencies
+- python 3.7.4
+- numpy 1.17.2
+- pytorch 1.4.0
+- torchvision 0.5.0
+- cudatoolkit 10.1
+- librosa 0.8.0 for `speech_commands`
+- PIL 6.2.0 for `GaussianBlur`
 
-In the meantime, if you want a practical example of our method, here is a quick implementation based on MoCo:
+# Data
+- CIFAR-10/100 will automatically be downloaded.
+- For ImageNet, please refer to the [[PyTorch ImageNet example](https://github.com/pytorch/examples/tree/master/imagenet)]. The folder structure should be like `data/imagenet/train/n01440764/`
+- For speech commands, run `bash speech_commands/download_speech_commands_dataset.sh`
+- For tabular datasets, download [[covtype.data.gz](https://archive.ics.uci.edu/ml/machine-learning-databases/covtype/covtype.data.gz)] and place it to `data/` and [[HIGGS.csv.gz](https://archive.ics.uci.edu/ml/machine-learning-databases/00280/HIGGS.csv.gz)] and place them in `data/`. They are processed when first loaded.
 
+# Running scripts
+Please refer to [[run.sh](run.sh)].
+
+
+For those who want to apply our method in their own code, we provide a minimal example based on [[MoCo](https://github.com/facebookresearch/moco)]:
 ```
 # mixup: somewhere in main_moco.py
 def mixup(input, alpha):
@@ -58,3 +83,10 @@ loss = lam * criterion(output, target) + (1. - lam) * criterion(output, target_a
 contrast = torch.cat([k, self.queue.clone().detach().t()], dim=0)
 logits = torch.mm(q, contrast.t())
 ```
+
+
+# Note
+- `builder.py` is adapted from [[MoCo](https://github.com/facebookresearch/moco/blob/master/moco/builder.py)] and [[PyContrast](https://github.com/HobbitLong/PyContrast/tree/master/pycontrast/learning)].
+- `main_*.py` is adapted from [[PyTorch ImageNet example](https://github.com/pytorch/examples/blob/master/imagenet/main.py)] and [[Mo](https://github.com/facebookresearch/moco/blob/master/main_moco.py)[Co](https://github.com/facebookresearch/moco/blob/master/main_lincls.py)].
+- `models/resnet.py` is adapted from [[torchvision](https://github.com/pytorch/vision/blob/master/torchvision/models/resnet.py)].
+- `speech_commands/` is adapted from [[this repo](https://github.com/tugstugi/pytorch-speech-commands)].
