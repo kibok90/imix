@@ -22,7 +22,7 @@ PyTorch code for the ICLR 2021 paper [[i-Mix: A Domain-Agnostic Strategy for Con
 - CIFAR-10/100 will automatically be downloaded.
 - For ImageNet, please refer to the [[PyTorch ImageNet example](https://github.com/pytorch/examples/tree/master/imagenet)]. The folder structure should be like `data/imagenet/train/n01440764/`
 - For speech commands, run `bash speech_commands/download_speech_commands_dataset.sh`.
-- For tabular datasets, download [[covtype.data.gz](https://archive.ics.uci.edu/ml/machine-learning-databases/covtype/covtype.data.gz)] and place it to `data/` and [[HIGGS.csv.gz](https://archive.ics.uci.edu/ml/machine-learning-databases/00280/HIGGS.csv.gz)] and place them in `data/`. They are processed when first loaded.
+- For tabular datasets, download [[covtype.data.gz](https://archive.ics.uci.edu/ml/machine-learning-databases/covtype/covtype.data.gz)] and [[HIGGS.csv.gz](https://archive.ics.uci.edu/ml/machine-learning-databases/00280/HIGGS.csv.gz)], and place them in `data/`. They are processed when first loaded.
 
 # Running scripts
 Please refer to [[run.sh](run.sh)].
