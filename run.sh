@@ -39,11 +39,11 @@ python main_pretext.py 'data' --dataset covtype -a mlp_5layer --warm --cos --lin
 # table 2 #
 ###########
 
-python main_pretext.py 'data' --dataset imagenet -a resnet50 --cos --warm --lincls --tb --resume true --method moco  --imix none   --proj mlp --temp 0.2 --epochs 800 --trial 0 --multiprocessing-distributed --dist-url 'tcp://localhost:10031' --lr 0.03 -b 512 --qlen 65536 --alpha 0.0 --class-ratio 0.1
-python main_pretext.py 'data' --dataset imagenet -a resnet50 --cos --warm --lincls --tb --resume true --method moco  --imix imixup --proj mlp --temp 0.2 --epochs 800 --trial 0 --multiprocessing-distributed --dist-url 'tcp://localhost:10032' --lr 0.03 -b 512 --qlen 65536 --alpha 0.2 --class-ratio 0.1
+python main_pretext.py 'data' --dataset imagenet -a resnet50 --cos --warm --lincls --tb --resume true --method moco  --imix none    --proj mlp --temp 0.2 --epochs 800 --trial 0 --multiprocessing-distributed --dist-url 'tcp://localhost:10031' --lr 0.03 -b 512 --qlen 65536 --class-ratio 0.1
+python main_pretext.py 'data' --dataset imagenet -a resnet50 --cos --warm --lincls --tb --resume true --method moco  --imix icutmix --proj mlp --temp 0.2 --epochs 800 --trial 0 --multiprocessing-distributed --dist-url 'tcp://localhost:10032' --lr 0.03 -b 512 --qlen 65536 --class-ratio 0.1
 
-python main_pretext.py 'data' --dataset imagenet -a resnet50 --cos --warm --lincls --tb --resume true --method moco  --imix none   --proj mlp --temp 0.2 --epochs 800 --trial 0 --multiprocessing-distributed --dist-url 'tcp://localhost:10033' --lr 0.03 -b 512 --qlen 65536 --alpha 0.0
-python main_pretext.py 'data' --dataset imagenet -a resnet50 --cos --warm --lincls --tb --resume true --method moco  --imix imixup --proj mlp --temp 0.2 --epochs 800 --trial 0 --multiprocessing-distributed --dist-url 'tcp://localhost:10034' --lr 0.03 -b 512 --qlen 65536 --alpha 0.2
+python main_pretext.py 'data' --dataset imagenet -a resnet50 --cos --warm --lincls --tb --resume true --method moco  --imix none    --proj mlp --temp 0.2 --epochs 800 --trial 0 --multiprocessing-distributed --dist-url 'tcp://localhost:10033' --lr 0.03 -b 512 --qlen 65536
+python main_pretext.py 'data' --dataset imagenet -a resnet50 --cos --warm --lincls --tb --resume true --method moco  --imix icutmix --proj mlp --temp 0.2 --epochs 800 --trial 0 --multiprocessing-distributed --dist-url 'tcp://localhost:10034' --lr 0.03 -b 512 --qlen 65536
 
 python main_pretext.py 'data' --dataset higgs100Kall -a mlp_5layer --warm --cos --pinv --tb --resume true --method moco  --imix none   --proj mlpbn --temp 0.1 --epochs 500 --trial 0 -b 512 --alpha 0.0 --inputdrop 0.2
 python main_pretext.py 'data' --dataset higgs100Kall -a mlp_5layer --warm --cos --pinv --tb --resume true --method moco  --imix imixup --proj mlpbn --temp 0.1 --epochs 500 --trial 0 -b 512 --alpha 1.0 --inputdrop 0.2
