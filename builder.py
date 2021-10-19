@@ -126,9 +126,9 @@ class Builder(nn.Module):
                 feature_q = encoder_q.forward_partial(im_q, start=0, end=mix_layer)  # queries: NxC
                 # i-mix
                 if imix == 'imixup':
-                    feature_q[:bsz], labels_aux, lam = imixup(feature_q[:bsz], alpha)
+                    feature_q[:bsz], labels_aux, lam = mixup(feature_q[:bsz], alpha)
                 elif imix == 'icutmix':
-                    feature_q[:bsz], labels_aux, lam = icutmix(feature_q[:bsz], alpha)
+                    feature_q[:bsz], labels_aux, lam = cutmix(feature_q[:bsz], alpha)
                 else:
                     labels_aux = lam = None
                 # compute query features after i-mix
@@ -142,9 +142,9 @@ class Builder(nn.Module):
                 feature_q = encoder_q.forward_partial(im_q, start=0, end=mix_layer)  # queries: NxC
                 # i-mix
                 if imix == 'imixup':
-                    feature_q, labels_aux, lam = imixup(feature_q, alpha)
+                    feature_q, labels_aux, lam = mixup(feature_q, alpha)
                 elif imix == 'icutmix':
-                    feature_q, labels_aux, lam = icutmix(feature_q, alpha)
+                    feature_q, labels_aux, lam = cutmix(feature_q, alpha)
                 else:
                     labels_aux = lam = None
                 # compute query features after i-mix
